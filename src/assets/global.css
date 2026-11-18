@@ -1,0 +1,232 @@
+:root {
+  /* Fondos principales */
+  --bg-main: #111319;
+  --bg-surface: #1b1f2a;
+  --bg-elevated: #252b3b;
+  --border-subtle: #323a4f;
+
+  /* Acentos temáticos */
+  --accent-orange: #e86f2c;
+  --accent-orange-hover: #cf5b1b;
+  --accent-chakra: #38a3d1;
+  --accent-chakra-hover: #298bb6;
+  --accent-sharingan: #d64545;
+  --accent-gold: #d9a441;
+
+  /* Textos */
+  --text-primary: #edf0f5;
+  --text-secondary: #9aa4b8;
+  --text-muted: #647087;
+
+  /* Estados de combate y HP */
+  --hp-high: #34a853;
+  --hp-mid: #e6a23c;
+  --hp-low: #d64545;
+
+  /* Naturalezas de Chakra (Tipos de carta) */
+  --type-fuego: #e0523c;
+  --type-rayo: #e5b83b;
+  --type-agua: #3898d1;
+  --type-tierra: #a47551;
+  --type-viento: #4db89c;
+  --type-taijutsu: #d97736;
+  --type-genjutsu: #9b5de5;
+
+  /* Sombras y radios */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --shadow-card: 0 8px 20px rgba(0, 0, 0, 0.35);
+}
+
+/* Reset y base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: radial-gradient(circle at top, #1b2234 0%, #111319 75%);
+  background-attachment: fixed;
+  color: var(--text-primary);
+  min-height: 100vh;
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+/* Contenedor principal centrado */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem;
+}
+
+/* Tipografía */
+h1, h2, h3, h4 {
+  color: var(--text-primary);
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+.section-title {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+  border-left: 4px solid var(--accent-orange);
+  padding-left: 0.75rem;
+}
+
+/* Botones universales */
+button {
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 0.65rem 1.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: background-color 0.2s ease, transform 0.12s ease, opacity 0.2s ease;
+}
+
+button:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background-color: var(--accent-orange);
+  color: #ffffff;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background-color: var(--accent-orange-hover);
+}
+
+.btn-chakra {
+  background-color: var(--accent-chakra);
+  color: #0b131e;
+}
+
+.btn-chakra:hover:not(:disabled) {
+  background-color: var(--accent-chakra-hover);
+}
+
+.btn-danger {
+  background-color: var(--accent-sharingan);
+  color: #ffffff;
+}
+
+.btn-secondary {
+  background-color: var(--bg-elevated);
+  color: var(--text-primary);
+  border: 1px solid var(--border-subtle);
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background-color: #2f374b;
+}
+
+/* Formularios e Inputs */
+input, select, textarea {
+  width: 100%;
+  padding: 0.65rem 0.9rem;
+  background-color: var(--bg-main);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 0.95rem;
+  transition: border-color 0.2s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--accent-chakra);
+}
+
+label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 0.35rem;
+}
+
+/* Paneles / Superficies */
+.panel {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-card);
+}
+
+/* Etiquetas de Naturaleza de Chakra */
+.badge-type {
+  display: inline-block;
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #111319;
+  background-color: var(--text-secondary);
+}
+
+.badge-type[data-type="Fuego"]    { background-color: var(--type-fuego); color: #fff; }
+.badge-type[data-type="Rayo"]     { background-color: var(--type-rayo); }
+.badge-type[data-type="Agua"]     { background-color: var(--type-agua); color: #fff; }
+.badge-type[data-type="Tierra"]   { background-color: var(--type-tierra); color: #fff; }
+.badge-type[data-type="Viento"]   { background-color: var(--type-viento); }
+.badge-type[data-type="Taijutsu"] { background-color: var(--type-taijutsu); color: #fff; }
+.badge-type[data-type="Genjutsu"] { background-color: var(--type-genjutsu); color: #fff; }
+
+/* Mensajes de estado (Error, Éxito, Carga) */
+.status-msg {
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  margin-top: 0.75rem;
+  font-weight: 500;
+}
+
+.status-error {
+  background-color: rgba(214, 69, 69, 0.15);
+  border: 1px solid var(--accent-sharingan);
+  color: #fca5a5;
+}
+
+.status-success {
+  background-color: rgba(52, 168, 83, 0.15);
+  border: 1px solid var(--hp-high);
+  color: #86efac;
+}
+
+.status-loading {
+  text-align: center;
+  color: var(--accent-chakra);
+  padding: 1.5rem;
+  font-weight: 600;
+}
+
+/* Responsive base */
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem 0.75rem;
+  }
+
+  .section-title {
+    font-size: 1.35rem;
+  }
+}
