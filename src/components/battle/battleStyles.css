@@ -1,0 +1,144 @@
+/*===
+Estilos de arena de combate por turnos
+===*/
+
+.battle-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 0.9rem 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.turn-banner {
+  font-weight: 700;
+  color: var(--accent-gold);
+  font-size: 1.05rem;
+}
+
+.arena-field {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.fighter-zone {
+  background-color: var(--bg-surface);
+  border: 2px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  transition: border-color 0.2s ease;
+}
+
+.fighter-zone.active-turn {
+  border-color: var(--accent-orange);
+  box-shadow: 0 0 16px rgba(232, 111, 44, 0.25);
+}
+
+.fighter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.hp-bar-bg {
+  width: 100%;
+  height: 14px;
+  background-color: var(--bg-main);
+  border-radius: 999px;
+  overflow: hidden;
+  margin: 0.5rem 0;
+  border: 1px solid var(--border-subtle);
+}
+
+.hp-bar-fill {
+  height: 100%;
+  background-color: var(--hp-high);
+  transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+.fighter-visual {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin: 1rem 0;
+}
+
+.fighter-visual img {
+  width: 110px;
+  height: 110px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+}
+
+.bench-strip {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.bench-pill {
+  flex: 1;
+  padding: 0.4rem;
+  border-radius: var(--radius-sm);
+  background-color: var(--bg-elevated);
+  font-size: 0.75rem;
+  text-align: center;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.bench-pill.current {
+  border-color: var(--accent-chakra);
+  font-weight: 700;
+}
+
+.bench-pill.ko {
+  opacity: 0.35;
+  text-decoration: line-through;
+  cursor: not-allowed;
+}
+
+.actions-panel {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.attacks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.battle-log {
+  background-color: var(--bg-main);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 0.9rem;
+  max-height: 150px;
+  overflow-y: auto;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+}
+
+.battle-log p {
+  margin-bottom: 0.35rem;
+}
+
+@media (max-width: 768px) {
+  .arena-field {
+    grid-template-columns: 1fr;
+  }
+}
