@@ -1,0 +1,279 @@
+{
+  "admins": [
+    {
+      "id": "1",
+      "username": "admin",
+      "password": "123",
+      "role": "Hokage Admin"
+    },
+    {
+      "id": "2",
+      "username": "konoha",
+      "password": "2026",
+      "role": "Administrador"
+    }
+  ],
+  "battles": [],
+  "cards": [
+    {
+      "id": "1",
+      "name": "Naruto Uzumaki",
+      "type": "Viento",
+      "hp": 250,
+      "image": "./public/images/cards/naruto.png",
+      "attacks": [
+        { "name": "Clones de Sombra", "damage": 40 },
+        { "name": "Rasengan", "damage": 55 }
+      ],
+      "special": { "name": "Rasenshuriken", "damage": 85, "cooldown": 2 },
+      "active": true
+    },
+    {
+      "id": "2",
+      "name": "Sasuke Uchiha",
+      "type": "Rayo",
+      "hp": 250,
+      "image": "./public/images/cards/sasuke.png",
+      "attacks": [
+        { "name": "Bola de Fuego", "damage": 42 },
+        { "name": "Chidori", "damage": 55 }
+      ],
+      "special": { "name": "Kirin", "damage": 85, "cooldown": 2 },
+      "active": true
+    },
+    {
+      "id": "3",
+      "name": "Sakura Haruno",
+      "type": "Tierra",
+      "hp": 240,
+      "image": "./public/images/cards/sakura.png",
+      "attacks": [
+        { "name": "Golpe de Chakra", "damage": 38 },
+        { "name": "Impacto Cerezo", "damage": 50 }
+      ],
+      "special": { "name": "Fuerza de un Centenar", "damage": 80, "cooldown": 2 },
+      "active": true
+    },
+    {
+      "id": "4",
+      "name": "Kakashi Hatake",
+      "type": "Rayo",
+      "hp": 260,
+      "image": "./public/images/cards/kakashi.png",
+      "attacks": [
+        { "name": "Colmillo Rastreador", "damage": 40 },
+        { "name": "Cortador de Relámpago", "damage": 58 }
+      ],
+      "special": { "name": "Kamui", "damage": 88, "cooldown": 2 },
+      "active": true
+    },
+    {
+      "id": "5",
+      "name": "Itachi Uchiha",
+      "type": "Fuego",
+      "hp": 260,
+      "image": "./public/images/cards/itachi.png",
+      "attacks": [
+        { "name": "Jutsu Gran Bola de Fuego", "damage": 45 },
+        { "name": "Cuervos Ilusorios", "damage": 52 }
+      ],
+      "special": { "name": "Amaterasu", "damage": 90, "cooldown": 2 },
+      "active": true
+    },
+    {
+      "id": "6",
+      "name": "Gaara del Desierto",
+      "type": "Tierra",
+      "hp": 270,
+      "image": "./public/images/cards/gaara.png",
+      "attacks": [
+        { "name": "Ataúd de Arena", "damage": 40 },
+        { "name": "Lluvia de Arena", "damage": 50 }
+      ],
+      "special": { "name": "Funeral de la Cascada de Arena", "damage": 82, "cooldown": 2 },
+      "active": true
+    },
+    {
+      "id": "7",
+      "name": "Jiraiya",
+      "type": "Fuego",
+      "hp": 270,
+      "image": "./public/images/cards/jiraiya.png",
+      "attacks": [
+        { "name": "Melena de León", "damage": 42 },
+        { "name": "Aceite de Sapo Flameante", "damage": 56 }
+      ],
+      "special": { "name": "Gran Bola Rasengan Sabio", "damage": 88, "cooldown": 2 },
+      "active": true
+    },
+    {
+      "id": "8",
+      "name": "Tsunade Senju",
+      "type": "Tierra",
+      "hp": 275,
+      "image": "./public/images/cards/tsunade.png",
+      "attacks": [
+        { "name": "Patada Descendente", "damage": 44 },
+        { "name": "Bisturí de Chakra", "damage": 54 }
+      ],
+      "special": { "name": "Sello Byakugou", "damage": 84, "cooldown": 2 },
+      "active": true
+    },
+    {
+      "id": "9",
+      "name": "Orochimaru",
+      "type": "Viento",
+      "hp": 265,
+      "image": "./public/images/cards/orochimaru.png",
+      "attacks": [
+        { "name": "Manos de Serpiente Ocultas", "damage": 42 },
+        { "name": "Espada Kusanagi", "damage": 55 }
+      ],
+      "special": { "name": "Formación de Diez Mil Serpientes", "damage": 85, "cooldown": 2 },
+      "active": true
+    },
+    {
+      "id": "10",
+      "name": "Minato Namikaze",
+      "type": "Rayo",
+      "hp": 265,
+      "image": "./public/images/cards/minato.png",
+      "attacks": [
+        { "name": "Destello Amarillo", "damage": 46 },
+        { "name": "Rasengan Veloz", "damage": 58 }
+      ],
+      "special": { "name": "Dios Trueno Volador Nivel 2", "damage": 90, "cooldown": 2 },
+      "active": true
+    },
+    {
+      "id": "11",
+      "name": "Kisame Hoshigaki",
+      "type": "Agua",
+      "hp": 275,
+      "image": "./public/images/cards/kisame.png",
+      "attacks": [
+        { "name": "Tajo de Samehada", "damage": 44 },
+        { "name": "Bala Tiburón de Agua", "damage": 55 }
+      ],
+      "special": { "name": "Gran Bomba Tiburón", "damage": 86, "cooldown": 2 },
+      "active": true
+    },
+    {
+      "id": "12",
+      "name": "Tobirama Senju",
+      "type": "Agua",
+      "hp": 265,
+      "image": "./public/images/cards/tobirama.png",
+      "attacks": [
+        { "name": "Muro de Agua", "damage": 40 },
+        { "name": "Misil Dragón de Agua", "damage": 58 }
+      ],
+      "special": { "name": "Corte del Dios Trueno", "damage": 88, "cooldown": 2 },
+      "active": true
+    },
+    {
+      "id": "13",
+      "name": "Temari",
+      "type": "Viento",
+      "hp": 240,
+      "image": "./public/images/cards/temari.png",
+      "attacks": [
+        { "name": "Ráfaga Cortante", "damage": 40 },
+        { "name": "Guadaña de Viento", "damage": 52 }
+      ],
+      "special": { "name": "Danza de la Comadreja", "damage": 80, "cooldown": 2 },
+      "active": true
+    },
+    {
+      "id": "14",
+      "name": "Madara Uchiha",
+      "type": "Fuego",
+      "hp": 290,
+      "image": "./public/images/cards/madara.png",
+      "attacks": [
+        { "name": "Aniquilación Ígnea", "damage": 48 },
+        { "name": "Espada Susanoo", "damage": 60 }
+      ],
+      "special": { "name": "Tengai Shinsei (Meteorito)", "damage": 95, "cooldown": 2 },
+      "active": true
+    },
+    {
+      "id": "15",
+      "name": "Hashirama Senju",
+      "type": "Tierra",
+      "hp": 290,
+      "image": "./public/images/cards/hashirama.png",
+      "attacks": [
+        { "name": "Dragón de Madera", "damage": 48 },
+        { "name": "Gólem de Madera", "damage": 60 }
+      ],
+      "special": { "name": "Verdaderas Mil Manos", "damage": 95, "cooldown": 2 },
+      "active": true
+    },
+    {
+      "id": "16",
+      "name": "Zabuza Momochi",
+      "type": "Agua",
+      "hp": 250,
+      "image": "./public/images/cards/zabuza.png",
+      "attacks": [
+        { "name": "Tajo Silencioso", "damage": 42 },
+        { "name": "Prisión de Agua", "damage": 52 }
+      ],
+      "special": { "name": "Dragón de Agua Gigante", "damage": 82, "cooldown": 2 },
+      "active": true
+    },
+    {
+      "id": "17",
+      "name": "Killer Bee",
+      "type": "Rayo",
+      "hp": 275,
+      "image": "./public/images/cards/killerbee.png",
+      "attacks": [
+        { "name": "Acrobacia de 7 Espadas", "damage": 45 },
+        { "name": "Lariat Eléctrico", "damage": 58 }
+      ],
+      "special": { "name": "Bomba Bestia con Cola", "damage": 90, "cooldown": 2 },
+      "active": true
+    },
+    {
+      "id": "18",
+      "name": "Asuma Sarutobi",
+      "type": "Viento",
+      "hp": 245,
+      "image": "./public/images/cards/asuma.png",
+      "attacks": [
+        { "name": "Cuchillas de Chakra", "damage": 42 },
+        { "name": "Nube de Ceniza Ardiente", "damage": 54 }
+      ],
+      "special": { "name": "Golondrina Voladora", "damage": 80, "cooldown": 2 },
+      "active": true
+    },
+    {
+      "id": "19",
+      "name": "Mei Terumi",
+      "type": "Agua",
+      "hp": 255,
+      "image": "./public/images/cards/mei.png",
+      "attacks": [
+        { "name": "Niebla Corrosiva", "damage": 44 },
+        { "name": "Pilar de Agua", "damage": 54 }
+      ],
+      "special": { "name": "Aparición de Lava Fundida", "damage": 85, "cooldown": 2 },
+      "active": true
+    },
+    {
+      "id": "20",
+      "name": "Obito Uchiha",
+      "type": "Fuego",
+      "hp": 270,
+      "image": "./public/images/cards/obito.png",
+      "attacks": [
+        { "name": "Danza Salvaje de Viento y Fuego", "damage": 46 },
+        { "name": "Cadenas del Camino Exterior", "damage": 56 }
+      ],
+      "special": { "name": "Invocación Gedou Mazou", "damage": 90, "cooldown": 2 },
+      "active": true
+    }
+  ]
+}
