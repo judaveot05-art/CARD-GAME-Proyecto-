@@ -128,7 +128,7 @@ class AdminCrud extends HTMLElement {
 
               <div>
                 <label>Puntos de Vida (HP) *</label>
-                <input type="number" id="card-hp" value="${c?.hp || 250}" min="100" max="500" required />
+                <input type="number" id="card-hp" value="${c?.hp || 250}" min="100" max="250" required />
               </div>
 
               <div>

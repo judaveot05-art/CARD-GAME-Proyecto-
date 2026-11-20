@@ -58,7 +58,7 @@
       "id": "4",
       "name": "Kakashi Hatake",
       "type": "Rayo",
-      "hp": 260,
+      "hp":250,
       "image": "./public/images/cards/Kakashi_Hatake.webp",
       "attacks": [
         { "name": "Colmillo Rastreador", "damage": 40 },
@@ -71,7 +71,7 @@
       "id": "5",
       "name": "Itachi Uchiha",
       "type": "Fuego",
-      "hp": 260,
+      "hp":250,
       "image": "./public/images/cards/Itachi.webp",
       "attacks": [
         { "name": "Jutsu Gran Bola de Fuego", "damage": 45 },
@@ -84,7 +84,7 @@
       "id": "6",
       "name": "Gaara del Desierto",
       "type": "Tierra",
-      "hp": 270,
+      "hp":250,
       "image": "./public/images/cards/Gaara_in_Part_I.webp",
       "attacks": [
         { "name": "Ataúd de Arena", "damage": 40 },
@@ -97,7 +97,7 @@
       "id": "7",
       "name": "Jiraiya",
       "type": "Fuego",
-      "hp": 270,
+      "hp":250,
       "image": "./public/images/cards/Profile_Jiraiya.webp",
       "attacks": [
         { "name": "Melena de León", "damage": 42 },
@@ -110,7 +110,7 @@
       "id": "8",
       "name": "Tsunade Senju",
       "type": "Tierra",
-      "hp": 275,
+      "hp":250,
       "image": "./public/images/cards/Tsunade_infobox2.webp",
       "attacks": [
         { "name": "Patada Descendente", "damage": 44 },
@@ -123,7 +123,7 @@
       "id": "9",
       "name": "Orochimaru",
       "type": "Viento",
-      "hp": 265,
+      "hp":250,
       "image": "./public/images/cards/Orochimaru_Infobox.webp",
       "attacks": [
         { "name": "Manos de Serpiente Ocultas", "damage": 42 },
@@ -136,7 +136,7 @@
       "id": "10",
       "name": "Minato Namikaze",
       "type": "Rayo",
-      "hp": 265,
+      "hp":250,
       "image": "./public/images/cards/Minato_Namikaze.webp",
       "attacks": [
         { "name": "Destello Amarillo", "damage": 46 },
@@ -149,7 +149,7 @@
       "id": "11",
       "name": "Kisame Hoshigaki",
       "type": "Agua",
-      "hp": 275,
+      "hp":250,
       "image": "./public/images/cards/Kisame.webp",
       "attacks": [
         { "name": "Tajo de Samehada", "damage": 44 },
@@ -162,7 +162,7 @@
       "id": "12",
       "name": "Tobirama Senju",
       "type": "Agua",
-      "hp": 265,
+      "hp":250,
       "image": "./public/images/cards/Tobirama_Senju.webp",
       "attacks": [
         { "name": "Muro de Agua", "damage": 40 },
@@ -188,7 +188,7 @@
       "id": "14",
       "name": "Madara Uchiha",
       "type": "Fuego",
-      "hp": 290,
+      "hp":250,
       "image": "./public/images/cards/Madara_img2.webp",
       "attacks": [
         { "name": "Aniquilación Ígnea", "damage": 48 },
@@ -201,7 +201,7 @@
       "id": "15",
       "name": "Hashirama Senju",
       "type": "Tierra",
-      "hp": 290,
+      "hp":250,
       "image": "./public/images/cards/Hashirama_Senju.webp",
       "attacks": [
         { "name": "Dragón de Madera", "damage": 48 },
@@ -227,7 +227,7 @@
       "id": "17",
       "name": "Killer Bee",
       "type": "Rayo",
-      "hp": 275,
+      "hp":250,
       "image": "./public/images/cards/Killer_B.webp",
       "attacks": [
         { "name": "Acrobacia de 7 Espadas", "damage": 45 },
@@ -266,7 +266,7 @@
       "id": "20",
       "name": "Obito Uchiha",
       "type": "Fuego",
-      "hp": 270,
+      "hp":250,
       "image": "./public/images/cards/Obito_Uchiha.webp",
       "attacks": [
         { "name": "Danza Salvaje de Viento y Fuego", "damage": 46 },
