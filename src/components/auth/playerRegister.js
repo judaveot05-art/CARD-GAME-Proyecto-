@@ -1,5 +1,5 @@
 import { getPlayers, postPlayer } from '../../api/playersApi.js';
-import { playSound } from '../../utils/soundManager.js';
+import { playSound } from '../../utils/SoundManager.js';
 
 class PlayerRegister extends HTMLElement {
   connectedCallback() {
@@ -86,12 +86,12 @@ class PlayerRegister extends HTMLElement {
 
       // Validar que no sean el mismo jugador
       if (name1.toLowerCase() === name2.toLowerCase()) {
-        statusBox.innerHTML = <div class="status-msg status-error">Los dos jugadores deben tener nombres distintos.</div>;
+        statusBox.innerHTML = `<div class="status-msg status-error">Los dos jugadores deben tener nombres distintos.</div>`;
         return;
       }
 
       submitBtn.disabled = true;
-      statusBox.innerHTML = <div class="status-loading">Verificando ninjas en la base de datos...</div>;
+      statusBox.innerHTML = `<div class="status-loading">Verificando ninjas en la base de datos...</div>`;
 
       try {
         const existingPlayers = await getPlayers();
@@ -128,7 +128,7 @@ class PlayerRegister extends HTMLElement {
           bubbles: true
         }));
       } catch (err) {
-        statusBox.innerHTML = <div class="status-msg status-error">Error de conexión con MockAPI: ${err.message}</div>;
+        statusBox.innerHTML = `<div class="status-msg status-error">Error de conexión con MockAPI: ${err.message}</div>`;
         submitBtn.disabled = false;
       }
     });
