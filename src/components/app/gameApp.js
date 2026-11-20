@@ -14,9 +14,32 @@ class CardGameApp extends HTMLElement {
     this.innerHTML = `
       <header style="background-color: var(--bg-surface); border-bottom: 1px solid var(--border-subtle); padding: 0.9rem 1.5rem;">
         <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
-          <div style="display: flex; align-items: center; gap: 0.6rem; cursor: pointer;" id="nav-brand">
-            <span style="font-size: 1.4rem;">🍥</span>
-            <strong style="font-size: 1.15rem; color: var(--text-primary); letter-spacing: 0.03em;">
+          <div style="display: flex; align-items: center; gap: 0.75rem; cursor: pointer;" id="nav-brand">
+            <div style="
+              width: 44px;
+              height: 44px;
+              border-radius: 50%;
+              background: radial-gradient(circle, rgba(255, 136, 0, 0.35) 0%, rgba(255, 102, 0, 0.12) 70%);
+              border: 2px solid var(--accent-orange);
+              box-shadow: 0 0 12px rgba(255, 119, 0, 0.55);
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              padding: 5px;
+              flex-shrink: 0;
+            ">
+              <img 
+                src="./public/images/icono-pagina.png" 
+                alt="Naruto Card Battle Logo" 
+                style="
+                  width: 100%;
+                  height: 100%;
+                  object-fit: contain;
+                  filter: brightness(2.2) contrast(1.2) drop-shadow(0 0 3px #ff8800);
+                "
+              />
+            </div>
+            <strong style="font-size: 1.2rem; color: var(--text-primary); letter-spacing: 0.03em;">
               NARUTO <span style="color: var(--accent-orange);">CARD BATTLE</span>
             </strong>
           </div>
@@ -94,7 +117,7 @@ class CardGameApp extends HTMLElement {
       this.render();
     });
 
-    // Evento emitido por <deck-selector>: conservamos player1 y player2 con ...this.matchData
+    // Evento emitido por <deck-selector>: conservamos player1 y player2
     this.addEventListener('decks-ready', (e) => {
       this.matchData = {
         ...this.matchData,
