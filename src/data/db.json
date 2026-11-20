@@ -20,7 +20,7 @@
       "name": "Naruto Uzumaki",
       "type": "Viento",
       "hp": 250,
-      "image": "./public/images/cards/naruto.png",
+      "image": "./public/images/cards/Naruto_newshot.webp",
       "attacks": [
         { "name": "Clones de Sombra", "damage": 40 },
         { "name": "Rasengan", "damage": 55 }
@@ -33,7 +33,7 @@
       "name": "Sasuke Uchiha",
       "type": "Rayo",
       "hp": 250,
-      "image": "./public/images/cards/sasuke.png",
+      "image": "./public/images/cards/Sasuke_Part_1.webp",
       "attacks": [
         { "name": "Bola de Fuego", "damage": 42 },
         { "name": "Chidori", "damage": 55 }
@@ -46,7 +46,7 @@
       "name": "Sakura Haruno",
       "type": "Tierra",
       "hp": 240,
-      "image": "./public/images/cards/sakura.png",
+      "image": "./public/images/cards/Sakura_Part_1.webp",
       "attacks": [
         { "name": "Golpe de Chakra", "damage": 38 },
         { "name": "Impacto Cerezo", "damage": 50 }
@@ -59,7 +59,7 @@
       "name": "Kakashi Hatake",
       "type": "Rayo",
       "hp": 260,
-      "image": "./public/images/cards/kakashi.png",
+      "image": "./public/images/cards/Kakashi_Hatake.webp",
       "attacks": [
         { "name": "Colmillo Rastreador", "damage": 40 },
         { "name": "Cortador de Relámpago", "damage": 58 }
@@ -72,7 +72,7 @@
       "name": "Itachi Uchiha",
       "type": "Fuego",
       "hp": 260,
-      "image": "./public/images/cards/itachi.png",
+      "image": "./public/images/cards/Itachi.webp",
       "attacks": [
         { "name": "Jutsu Gran Bola de Fuego", "damage": 45 },
         { "name": "Cuervos Ilusorios", "damage": 52 }
@@ -85,7 +85,7 @@
       "name": "Gaara del Desierto",
       "type": "Tierra",
       "hp": 270,
-      "image": "./public/images/cards/gaara.png",
+      "image": "./public/images/cards/Gaara_in_Part_I.webp",
       "attacks": [
         { "name": "Ataúd de Arena", "damage": 40 },
         { "name": "Lluvia de Arena", "damage": 50 }
@@ -98,7 +98,7 @@
       "name": "Jiraiya",
       "type": "Fuego",
       "hp": 270,
-      "image": "./public/images/cards/jiraiya.png",
+      "image": "./public/images/cards/Profile_Jiraiya.webp",
       "attacks": [
         { "name": "Melena de León", "damage": 42 },
         { "name": "Aceite de Sapo Flameante", "damage": 56 }
@@ -111,7 +111,7 @@
       "name": "Tsunade Senju",
       "type": "Tierra",
       "hp": 275,
-      "image": "./public/images/cards/tsunade.png",
+      "image": "./public/images/cards/Tsunade_infobox2.webp",
       "attacks": [
         { "name": "Patada Descendente", "damage": 44 },
         { "name": "Bisturí de Chakra", "damage": 54 }
@@ -124,7 +124,7 @@
       "name": "Orochimaru",
       "type": "Viento",
       "hp": 265,
-      "image": "./public/images/cards/orochimaru.png",
+      "image": "./public/images/cards/Orochimaru_Infobox.webp",
       "attacks": [
         { "name": "Manos de Serpiente Ocultas", "damage": 42 },
         { "name": "Espada Kusanagi", "damage": 55 }
@@ -137,7 +137,7 @@
       "name": "Minato Namikaze",
       "type": "Rayo",
       "hp": 265,
-      "image": "./public/images/cards/minato.png",
+      "image": "./public/images/cards/Minato_Namikaze.webp",
       "attacks": [
         { "name": "Destello Amarillo", "damage": 46 },
         { "name": "Rasengan Veloz", "damage": 58 }
@@ -150,7 +150,7 @@
       "name": "Kisame Hoshigaki",
       "type": "Agua",
       "hp": 275,
-      "image": "./public/images/cards/kisame.png",
+      "image": "./public/images/cards/Kisame.webp",
       "attacks": [
         { "name": "Tajo de Samehada", "damage": 44 },
         { "name": "Bala Tiburón de Agua", "damage": 55 }
@@ -163,7 +163,7 @@
       "name": "Tobirama Senju",
       "type": "Agua",
       "hp": 265,
-      "image": "./public/images/cards/tobirama.png",
+      "image": "./public/images/cards/Tobirama_Senju.webp",
       "attacks": [
         { "name": "Muro de Agua", "damage": 40 },
         { "name": "Misil Dragón de Agua", "damage": 58 }
@@ -176,7 +176,7 @@
       "name": "Temari",
       "type": "Viento",
       "hp": 240,
-      "image": "./public/images/cards/temari.png",
+      "image": "./public/images/cards/Temari_newshot.webp",
       "attacks": [
         { "name": "Ráfaga Cortante", "damage": 40 },
         { "name": "Guadaña de Viento", "damage": 52 }
@@ -189,7 +189,7 @@
       "name": "Madara Uchiha",
       "type": "Fuego",
       "hp": 290,
-      "image": "./public/images/cards/madara.png",
+      "image": "./public/images/cards/Madara_img2.webp",
       "attacks": [
         { "name": "Aniquilación Ígnea", "damage": 48 },
         { "name": "Espada Susanoo", "damage": 60 }
@@ -202,7 +202,7 @@
       "name": "Hashirama Senju",
       "type": "Tierra",
       "hp": 290,
-      "image": "./public/images/cards/hashirama.png",
+      "image": "./public/images/cards/Hashirama_Senju.webp",
       "attacks": [
         { "name": "Dragón de Madera", "damage": 48 },
         { "name": "Gólem de Madera", "damage": 60 }
@@ -215,7 +215,7 @@
       "name": "Zabuza Momochi",
       "type": "Agua",
       "hp": 250,
-      "image": "./public/images/cards/zabuza.png",
+      "image": "./public/images/cards/Zabuza_Momochi.webp",
       "attacks": [
         { "name": "Tajo Silencioso", "damage": 42 },
         { "name": "Prisión de Agua", "damage": 52 }
@@ -228,7 +228,7 @@
       "name": "Killer Bee",
       "type": "Rayo",
       "hp": 275,
-      "image": "./public/images/cards/killerbee.png",
+      "image": "./public/images/cards/Killer_B.webp",
       "attacks": [
         { "name": "Acrobacia de 7 Espadas", "damage": 45 },
         { "name": "Lariat Eléctrico", "damage": 58 }
@@ -241,7 +241,7 @@
       "name": "Asuma Sarutobi",
       "type": "Viento",
       "hp": 245,
-      "image": "./public/images/cards/asuma.png",
+      "image": "./public/images/cards/Asuma.webp",
       "attacks": [
         { "name": "Cuchillas de Chakra", "damage": 42 },
         { "name": "Nube de Ceniza Ardiente", "damage": 54 }
@@ -254,7 +254,7 @@
       "name": "Mei Terumi",
       "type": "Agua",
       "hp": 255,
-      "image": "./public/images/cards/mei.png",
+      "image": "./public/images/cards/Mei.webp",
       "attacks": [
         { "name": "Niebla Corrosiva", "damage": 44 },
         { "name": "Pilar de Agua", "damage": 54 }
@@ -267,7 +267,7 @@
       "name": "Obito Uchiha",
       "type": "Fuego",
       "hp": 270,
-      "image": "./public/images/cards/obito.png",
+      "image": "./public/images/cards/Obito_Uchiha.webp",
       "attacks": [
         { "name": "Danza Salvaje de Viento y Fuego", "damage": 46 },
         { "name": "Cadenas del Camino Exterior", "damage": 56 }

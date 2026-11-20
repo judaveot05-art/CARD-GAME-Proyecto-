@@ -73,6 +73,7 @@ Estilos de arena de combate por turnos
   width: 110px;
   height: 110px;
   object-fit: cover;
+  object-position: center 15%;
   border-radius: var(--radius-md);
   border: 1px solid var(--border-subtle);
 }

@@ -1,6 +1,6 @@
 //WEB COMPONENT(Seleccion de mazo)
 import { getCards } from '../../api/cardsApi.js';
-import { playSound } from '../../utils/soundManager.js';
+import { playSound } from '../../utils/SoundManager.js';
 
 class DeckSelector extends HTMLElement {
   constructor() {
@@ -19,7 +19,7 @@ class DeckSelector extends HTMLElement {
   }
 
   async connectedCallback() {
-    this.innerHTML = <div class="container"><div class="status-loading">Cargando pergaminos ninja disponibles...</div></div>;
+    this.innerHTML = `<div class="container"><div class="status-loading">Cargando pergaminos ninja disponibles...</div></div>`;
     try {
       const cards = await getCards();
       // Filtrar solo cartas activas
@@ -34,7 +34,7 @@ class DeckSelector extends HTMLElement {
 
       this.render();
     } catch (err) {
-      this.innerHTML = <div class="container"><div class="status-msg status-error">No se pudieron cargar las cartas: ${err.message}</div></div>;
+      this.innerHTML = `<div class="container"><div class="status-msg status-error">No se pudieron cargar las cartas: ${err.message}</div></div>`;
     }
   }
 
@@ -48,14 +48,34 @@ class DeckSelector extends HTMLElement {
 
   render() {
     const selectedIds = this.activeDeck.map(c => String(c.id));
+    const isP1 = this.currentTurn === 1;
 
     this.innerHTML = `
       <div class="container">
         <div class="panel">
+          <!-- Indicador visual de Jugador 1 vs Jugador 2 -->
+          <div style="display: flex; gap: 0.75rem; margin-bottom: 1.25rem; flex-wrap: wrap;">
+            <div style="flex: 1; min-width: 220px; padding: 0.85rem 1rem; border-radius: var(--radius-md); border: 2px solid ${isP1 ? 'var(--accent-orange)' : 'var(--border-subtle)'}; background: ${isP1 ? 'rgba(255, 107, 0, 0.14)' : 'var(--bg-elevated)'};">
+              <div style="font-size: 0.75rem; text-transform: uppercase; color: var(--accent-orange); font-weight: 700; margin-bottom: 0.2rem;">
+                ${isP1 ? '👉 Eligiendo ahora' : '✅ Mazo Confirmado'}
+              </div>
+              <strong style="font-size: 1.05rem;">Jugador 1: ${this.player1?.username || 'J1'}</strong>
+              <span style="font-size: 0.85rem; color: var(--text-secondary);"> (${this.deck1.length}/5 cartas)</span>
+            </div>
+
+            <div style="flex: 1; min-width: 220px; padding: 0.85rem 1rem; border-radius: var(--radius-md); border: 2px solid ${!isP1 ? '#38bdf8' : 'var(--border-subtle)'}; background: ${!isP1 ? 'rgba(56, 189, 248, 0.14)' : 'var(--bg-elevated)'};">
+              <div style="font-size: 0.75rem; text-transform: uppercase; color: #38bdf8; font-weight: 700; margin-bottom: 0.2rem;">
+                ${!isP1 ? '👉 Eligiendo ahora' : '⏳ Esperando turno'}
+              </div>
+              <strong style="font-size: 1.05rem;">Jugador 2: ${this.player2?.username || 'J2'}</strong>
+              <span style="font-size: 0.85rem; color: var(--text-secondary);"> (${this.deck2.length}/5 cartas)</span>
+            </div>
+          </div>
+
           <div class="deck-header">
             <div>
               <h2 class="section-title">
-                Turno de selección: <span style="color: var(--accent-orange);">${this.activePlayer?.username || 'Jugador'}</span>
+                Turno de <span style="color: ${isP1 ? 'var(--accent-orange)' : '#38bdf8'};">${this.activePlayer?.username || 'Jugador'}</span>
               </h2>
               <p style="color: var(--text-secondary);">Elige exactamente 5 cartas para tu equipo de combate.</p>
             </div>
@@ -63,7 +83,7 @@ class DeckSelector extends HTMLElement {
             <div style="display: flex; align-items: center; gap: 1rem;">
               <span class="deck-counter">Seleccionadas: ${this.activeDeck.length} / 5</span>
               <button class="btn-primary" id="btn-confirm-deck" ${this.activeDeck.length !== 5 ? 'disabled' : ''}>
-                ${this.currentTurn === 1 ? 'Confirmar Mazo J1 →' : '¡Iniciar Batalla! ⚔️'}
+                ${isP1 ? `Confirmar Mazo de ${this.player1?.username || 'J1'} →` : '¡Iniciar Batalla! ⚔️'}
               </button>
             </div>
           </div>
@@ -74,7 +94,7 @@ class DeckSelector extends HTMLElement {
               return `
                 <div class="selectable-card ${isSelected ? 'selected' : ''}" data-id="${card.id}">
                   <div>
-                    <img src="${card.image || './public/images/cards/default.png'}" alt="${card.name}" onerror="this.src='https://placehold.co/300x200/1b1f2a/edf0f5?text=Shinobi'" />
+                    <img src="${card.image || './public/images/cards/default.png'}" alt="${card.name}" onerror="this.src='https://placehold.co/300x200/1b1f2a/edf0f5?text=${encodeURIComponent(card.name)}'" />
                     <div class="card-meta">
                       <span class="badge-type" data-type="${card.type}">${card.type}</span>
                       <span class="card-hp-tag">HP ${card.hp || 250}</span>
@@ -126,6 +146,7 @@ class DeckSelector extends HTMLElement {
       if (this.currentTurn === 1) {
         this.currentTurn = 2;
         this.render();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       } else {
         // Enviar mazos listos a <card-game-app>
         this.dispatchEvent(new CustomEvent('decks-ready', {

@@ -1,4 +1,4 @@
-import { API_URL } from "./apiConfig";
+import { API_URL } from "./apiConfig.js";
 
 const ENDPOINT = `${API_URL}/players`;
 

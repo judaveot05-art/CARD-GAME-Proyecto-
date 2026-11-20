@@ -40,16 +40,16 @@ class CardGameApp extends HTMLElement {
       </main>
     `;
 
-    // Pasar datos dinámicos si estamos en selección de mazo o batalla
     if (this.currentView === 'deck' && this.matchData) {
       const deckEl = this.querySelector('deck-selector');
-      deckEl?.setPlayers(this.matchData.player1, this.matchData.player2);
+      if (deckEl && typeof deckEl.setPlayers === 'function') {
+        deckEl.setPlayers(this.matchData.player1, this.matchData.player2);
+      }
     }
 
     if (this.currentView === 'battle' && this.matchData) {
       const battleEl = this.querySelector('battle-arena');
       battleEl?.setupBattle(this.matchData);
-      battleEl?.render();
     }
   }
 
@@ -94,9 +94,15 @@ class CardGameApp extends HTMLElement {
       this.render();
     });
 
-    // Evento emitido por <deck-selector>
+    // Evento emitido por <deck-selector>: conservamos player1 y player2 con ...this.matchData
     this.addEventListener('decks-ready', (e) => {
-      this.matchData = e.detail;
+      this.matchData = {
+        ...this.matchData,
+        player1: e.detail.player1 || this.matchData?.player1 || { username: 'Jugador 1' },
+        player2: e.detail.player2 || this.matchData?.player2 || { username: 'Jugador 2' },
+        deck1: e.detail.deck1,
+        deck2: e.detail.deck2
+      };
       this.currentView = 'battle';
       this.render();
     });

@@ -1,4 +1,4 @@
-import { getAdmins } from '../../api/adminsApi.js';
+import { getAdmins } from '../../api/adminApi.js';
 import { getCards, postCard, putCard, patchCard, deleteCard } from '../../api/cardsApi.js';
 
 class AdminCrud extends HTMLElement {
@@ -16,7 +16,6 @@ class AdminCrud extends HTMLElement {
       await this.loadCardsAndRender();
     }
   }
-
 
   renderLogin() {
     this.innerHTML = `
@@ -71,7 +70,6 @@ class AdminCrud extends HTMLElement {
       }
     });
   }
-
 
   async loadCardsAndRender() {
     this.innerHTML = `<div class="container"><div class="status-loading">Cargando cartas desde MockAPI...</div></div>`;
@@ -135,7 +133,7 @@ class AdminCrud extends HTMLElement {
 
               <div>
                 <label>URL o Ruta de Imagen</label>
-                <input type="text" id="card-image" value="${c?.image || './public/images/cards/default.png'}" />
+                <input type="text" id="card-image" value="${c?.image || './public/images/cards/Naruto_newshot.webp'}" />
               </div>
 
               <div>

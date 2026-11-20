@@ -1,6 +1,6 @@
 //WEB COMPONENT(Arena de batalla 1vs1)
 import { calculateDamage } from '../../utils/battleEngine.js';
-import { playSound } from '../../utils/soundManager.js';
+import { playSound } from '../../utils/SoundManager.js';
 import { putPlayer } from '../../api/playersApi.js';
 import { postBattle } from '../../api/battlesApi.js';
 
@@ -37,7 +37,8 @@ class BattleArena extends HTMLElement {
     this.activeIdx2 = 0;
     this.turn = 1;
     this.finished = false;
-    this.logs = ["¡Comienza el combate entre ${player1.username} y ${player2.username}!"];
+    this.logs = [`¡Comienza el combate entre ${player1.username} y ${player2.username}!`];
+    this.render();
   }
 
   connectedCallback() {
@@ -76,7 +77,7 @@ class BattleArena extends HTMLElement {
         <!-- Barra superior de estado -->
         <div class="battle-topbar">
           <div class="turn-banner">
-            ${this.finished ? '🏆 ¡Combate Finalizado!' : '⚡ Turno de: ${activePlayerName}'}
+            ${this.finished ? '🏆 ¡Combate Finalizado!' : `⚡ Turno de: ${activePlayerName}`}
           </div>
           <div style="font-size: 0.9rem; color: var(--text-secondary);">
             Vivas J1: <strong>${this.team1.filter(c => c.currentHp > 0).length}/5</strong> |
@@ -125,7 +126,7 @@ class BattleArena extends HTMLElement {
 
         <!-- Historial de turnos -->
         <div class="battle-log">
-          ${this.logs.map(line => <p>• ${line}</p>).join('')}
+          ${this.logs.map(line => `<p>• ${line}</p>`).join('')}
         </div>
       </div>
     `;

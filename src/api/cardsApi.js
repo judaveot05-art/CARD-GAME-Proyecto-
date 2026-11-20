@@ -1,11 +1,11 @@
-import { API_URL } from "./apiConfig";
+import { API_URL } from "./apiConfig.js";
 
 const ENDPOINT = `${API_URL}/cards`;
 
 export async function getCards() {
     const response = await fetch(ENDPOINT);
     if(!response.ok) throw new Error('Error al obtener las cartas');
-    return await response.json;
+    return await response.json();
 }
 
 export async function postCard(card) {
