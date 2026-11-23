@@ -27,26 +27,33 @@ Juego web de estrategia y combate de cartas coleccionables por turnos ambientado
 
 * **Frontend:** HTML5, CSS3 (variables personalizadas, animaciones por evento y diseño responsivo) y JavaScript ES6+ Modules.
 * **Arquitectura:** Custom Elements (`HTMLElement`) nativos sin frameworks externos.
-* **Backend / Persistencia:** REST API en [MockAPI.io](https://mockapi.io/) con los recursos `admins`, `players`, `cards` y `battles` (y respaldo local en `src/data/db.json`).
+* **Backend / Persistencia:** REST API en [MockAPI.io](https://mockapi.io/) con los recursos `admins`, `players`, `cards` y `battles` (y respaldo base en `src/data/db.json`).
 * **Activos:** Imágenes optimizadas en formato `.webp` y efectos de sonido integrados.
+
+---
+
+## Credenciales de administración (Evaluación)
+
+* **Usuario:** `admin`
+* **Contraseña:** `123`
 
 ---
 
 ## Estructura del proyecto
 
-```text
-CARD-GAME-Proyecto-/
-├── public/
-│   ├── images/          # Logo y catálogo de cartas en .webp
-│   └── sounds/          # Efectos de sonido de combate e interfaz
-├── src/
-│   ├── api/             # Conexión y endpoints de MockAPI (Fetch API)
-│   ├── assets/          # Estilos globales (global.css)
-│   ├── components/      # Web Components (app, auth, deck, battle, leaderboard, admin)
-│   ├── data/            # Dataset base de 20 cartas (db.json)
-│   ├── utils/           # Motor de combate, validadores y gestor de audio
-│   └── app.js           # Punto de entrada principal
-├── .env.example         # Plantilla de variables de entorno
-├── .gitignore
-├── index.html
-└── README.md
+* `public/images/` — Logo y catálogo de cartas en `.webp`
+* `public/sounds/` — Efectos de sonido de combate e interfaz
+* `src/api/` — Conexión y endpoints de MockAPI (`Fetch API`)
+* `src/assets/` — Estilos globales (`global.css`)
+* `src/components/` — Web Components (`app`, `auth`, `deck`, `battle`, `leaderboard`, `admin`)
+* `src/data/` — Dataset base de 20 cartas (`db.json`)
+* `src/utils/` — Motor de combate, validadores y gestor de audio
+* `src/app.js` — Punto de entrada principal
+* `.env.example` — Plantilla de variables de entorno (`API_MODE`, `API_DEV_URL`, `API_PROD_URL`)
+
+---
+
+## Autores
+
+* **Miguel Angel Jaimes Bernal** — [@SrMiguel-1](https://github.com/SrMiguel-1)
+* **Juan David Vega** — [@judaveot05-art](https://github.com/judaveot05-art)
