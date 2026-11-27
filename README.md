@@ -39,3 +39,9 @@ CARD-GAME-Proyecto-/
 ├── .env.example         # Plantilla de variables de entorno
 ├── .gitignore
 └── index.html
+
+## Archivos modificados
+
+* **BattleArena.js**
+* **battleEngine.js**
+*Se actualizo estos archivos para aplicar lo pedido en el parcial.
