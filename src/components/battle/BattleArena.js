@@ -10,9 +10,13 @@ class BattleArena extends HTMLElement {
     this.turn = 1; // 1 o 2
     this.logs = [];
     this.finished = false;
+    this.isAutoMode=false;
+    this.autoTimer=null;
+    this.lastEventBanner='';
   }
 
   setupBattle({ player1, player2, deck1, deck2 }) {
+    this.clearAutoTimer();
     this.player1 = player1;
     this.player2 = player2;
 
@@ -35,10 +39,14 @@ class BattleArena extends HTMLElement {
 
     this.activeIdx1 = 0;
     this.activeIdx2 = 0;
-    this.turn = 1;
+    this.turn = 1;//
     this.finished = false;
+    this.lastEventBanner='';
     this.logs = [`¡Comienza el combate entre ${player1.username} y ${player2.username}!`];
     this.render();
+    if(this.isAutoMode){
+      this.scheduleAutoTurn();
+    }
   }
 
   connectedCallback() {
@@ -46,7 +54,16 @@ class BattleArena extends HTMLElement {
       this.render();
     }
   }
-
+  disconnectedCallback(){
+    this.clearAutoTimer();
+  }
+  
+  clearAutoTimer(){
+    if(this.autoTimer){
+      clearTimeout(this.autoTimer);
+      this.autoTimer=null;
+    }
+  }
   get activeCard1() {
     return this.team1[this.activeIdx1];
   }
@@ -66,11 +83,85 @@ class BattleArena extends HTMLElement {
     this.logs.unshift(msg);
   }
 
+  toggleBattleMode(){
+    if(this.finished)return;
+    this.isAutoMode=!this.isAutoMode;
+    this.clearAutoTimer();
+
+    if(this.isAutoMode){
+      this.addLog('modo Automático activo');
+      this.render();
+      this.scheduleAutoTurn();
+    }else{
+      this.addLog('modo Automático inactivo');
+      this.render();
+    }
+  }
+  scheduleAutoTurn(){
+    this.clearAutoTimer();
+    if(!this.isAutoMode || this.finished)return;
+    this.autoTimer=setTimeout(()=>{
+      if(!this.isAutoMode || this.finished)return;
+      this.executeAutoAction();
+    }, 1400);
+  }
+  executeAutoAction() {
+    const attacker = this.turn === 1 ? this.activeCard1 : this.activeCard2;
+    const defender = this.turn === 1 ? this.activeCard2 : this.activeCard1;
+
+    const availableActions = [
+      ...(attacker.attacks || []).map(atk => ({
+        type: 'attack',
+        name: atk.name,
+        damage: atk.damage
+      })),
+      { type: 'defend' }
+    ];
+
+    if (attacker.special && attacker.specialCooldown === 0) {
+      availableActions.push({
+        type: 'special',
+        name: attacker.special.name || 'Poder Especial',
+        damage: attacker.special.damage || 75,
+        cooldown: attacker.special.cooldown || 2
+      });
+    }
+
+    let chosenAction;
+    const specialAction = availableActions.find(a => a.type === 'special');
+    const hpRatio = attacker.currentHp / attacker.maxHp;
+
+    if (specialAction && Math.random() < 0.7) {
+      chosenAction = specialAction;
+    } else if (hpRatio < 0.35 && !attacker.isDefending && Math.random() < 0.45) {
+      chosenAction = { type: 'defend' };
+    } else {
+      const randomIndex = Math.floor(Math.random() * availableActions.length);
+      chosenAction = availableActions[randomIndex];
+    }
+
+    if (chosenAction.type === 'defend') {
+      playSound('./public/sounds/defend.mp3');
+      attacker.isDefending = true;
+      this.lastEventBanner = '';
+      this.addLog(`${attacker.name} adopta postura defensiva (daño reducido al 50%).`);
+      this.nextTurn();
+    } else if (chosenAction.type === 'special') {
+      playSound('./public/sounds/special.mp3');
+      attacker.specialCooldown = chosenAction.cooldown;
+      this.executeStrike(attacker, defender, chosenAction.name, chosenAction.damage, true);
+    } else {
+      playSound('./public/sounds/attack.mp3');
+      this.executeStrike(attacker, defender, chosenAction.name, chosenAction.damage, false);
+    }
+  }
+
   render() {
     const c1 = this.activeCard1;
     const c2 = this.activeCard2;
     const attacker = this.turn === 1 ? c1 : c2;
     const activePlayerName = this.turn === 1 ? this.player1.username : this.player2.username;
+    const disableControls = this.isAutoMode ? 'disabled' : '';
 
     this.innerHTML = `
       <div class="container">
@@ -78,6 +169,17 @@ class BattleArena extends HTMLElement {
         <div class="battle-topbar">
           <div class="turn-banner">
             ${this.finished ? '🏆 ¡Combate Finalizado!' : `⚡ Turno de: ${activePlayerName}`}
+          </div>
+          <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <span style="font-size: 0.85rem; font-weight: 700; padding: 0.3rem 0.65rem; border-radius: 6px; background: ${this.isAutoMode ? 'rgba(255, 183, 3, 0.2)' : 'rgba(255,255,255,0.08)'}; color: ${this.isAutoMode ? 'var(--accent-gold)' : 'var(--text-secondary)'};">
+              ${this.isAutoMode ? 'MODO AUTOMÁTICO ACTIVO' : 'MODO MANUAL'}
+            </span>
+
+            ${!this.finished ? `
+              <button class="btn-secondary" id="btn-toggle-mode">
+                Cambiar a ${this.isAutoMode ? 'Modo Manual' : 'Modo Automático'}
+              </button>
+            ` : ''}
           </div>
           <div style="font-size: 0.9rem; color: var(--text-secondary);">
             Vivas J1: <strong>${this.team1.filter(c => c.currentHp > 0).length}/5</strong> |
@@ -185,6 +287,11 @@ class BattleArena extends HTMLElement {
       });
       return;
     }
+    this.querySelector('#btn-toggle-mode') ?.addEventListener('click', ()=>{
+      this.toggleBattleMode();
+    });
+
+    if(this.isAutoMode)return;
 
     const attacker = this.turn === 1 ? this.activeCard1 : this.activeCard2;
     const defender = this.turn === 1 ? this.activeCard2 : this.activeCard1;
@@ -216,6 +323,7 @@ class BattleArena extends HTMLElement {
     this.querySelector('#btn-defend')?.addEventListener('click', () => {
       playSound('./public/sounds/defend.mp3');
       attacker.isDefending = true;
+      this.lastEventBanner='';
       this.addLog(`${attacker.name} adopta postura defensiva (daño reducido al 50%).`);
       this.nextTurn();
     });
@@ -236,6 +344,7 @@ class BattleArena extends HTMLElement {
         else this.activeIdx2 = idx;
 
         playSound('./public/sounds/select.mp3');
+        this.lastEventBanner='';
         this.addLog(`Cambio táctico: entra ${team[idx].name} al combate.`);
         this.nextTurn();
       });
@@ -246,20 +355,32 @@ class BattleArena extends HTMLElement {
     // Limpiar defensa propia al atacar
     attacker.isDefending = false;
 
-    const { finalDamage, note } = calculateDamage(
+    const { finalDamage, dodged, isCritical, note } = calculateDamage(
       baseDamage,
       attacker.type,
       defender.type,
       defender.isDefending
     );
-
+    if (dodged) {
+      playSound('./public/sounds/defend.mp3');
+      this.lastEventBanner = `¡ATAQUE ESQUIVADO! ${defender.name} evitó ${moveName}.`;
+    } else if (isCritical) {
+      playSound('./public/sounds/special.mp3');
+      this.lastEventBanner = `¡GOLPE CRÍTICO! ${attacker.name} infligió ${finalDamage} de daño.`;
+    } else {
+      this.lastEventBanner = '';
+    }
     // Consumir postura defensiva del rival tras recibir el impacto
     defender.isDefending = false;
     defender.currentHp = Math.max(0, defender.currentHp - finalDamage);
 
-    this.addLog(
-      `${attacker.name} usa ${moveName} contra ${defender.name} y causa ${finalDamage} de daño. ${note}`
-    );
+    if (dodged) {
+      this.addLog(`${attacker.name} usa ${moveName} contra ${defender.name}, pero ¡ATAQUE ESQUIVADO! (0 de daño).`);
+    } else {
+      this.addLog(
+        `${attacker.name} usa ${moveName} contra ${defender.name} y causa ${finalDamage} de daño. ${note}`
+      );
+    }
 
     // Verificar si la carta defensora fue derrotada
     if (defender.currentHp === 0) {
@@ -291,10 +412,15 @@ class BattleArena extends HTMLElement {
 
     this.turn = this.turn === 1 ? 2 : 1;
     this.render();
+
+    if(this.isAutoMode && !this.finished){
+      this.scheduleAutoTurn();
+    }
   }
 
   async finishMatch() {
     this.finished = true;
+    this.clearAutoTimer();
     playSound('./public/sounds/victory.mp3');
 
     const winner = this.turn === 1 ? this.player1 : this.player2;
@@ -328,6 +454,7 @@ class BattleArena extends HTMLElement {
         player2: this.player2.username,
         winner: winner.username,
         pointsEarned: earnedPoints,
+        mode: this.isAutoMode ? 'automatico' : 'manual',
         date: new Date().toISOString()
       });
     } catch (err) {
